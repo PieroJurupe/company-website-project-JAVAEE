@@ -11,7 +11,6 @@ productos.forEach(function(producto) {
 	});
 });
 
-
 // Obtén los elementos de los botones de aumento y disminución
 const incrementButtons = document.querySelectorAll('.buttons button:nth-child(3)');
 const decrementButtons = document.querySelectorAll('.buttons button:nth-child(1)');
@@ -64,6 +63,12 @@ function decrementQuantity(event) {
 		subtotalElement.textContent = subtotal; // Actualiza el subtotal en el elemento
 
 		updateTotalPrice(); // Actualiza el precio total
+	} else {
+		Array.from(productos).forEach(element => {
+			if (element == product ) { element.remove(); }
+		})
+		product.style.display = "none"
+		updateTotalPrice(); // Actualiza el precio total
 	}
 }
 
@@ -88,6 +93,7 @@ const comprarBtn = document.querySelector('.total-price button');
 const mensaje = document.getElementById('message');
 
 comprarBtn.addEventListener('click', () => {
+	if (totalPrice)
 	mensaje.style.display = "block";
 	overlay.style.display = "block";
 	setTimeout(() => {

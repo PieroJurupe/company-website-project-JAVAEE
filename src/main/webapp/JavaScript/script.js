@@ -24,46 +24,46 @@ document.write(`
 
 //Generar Detalles del carrito
 document.write(`
-	<div class="cart-details">
-		<p id="cart-title">Mis productos</p>
-		<div class="cart-details-product">
-			<img src="Images/Tablet2.jpg">
-			<div class="details-info">
-				<h2>iPad Wi-Fi</h2>
-				<p>S/ 2,199.00</p>
-			</div>
-			<div class="cart-product-quantity"><p>1</p></div>
-			<div class="details-buttons">
-				<div class="plus"><button>+</button></div>
-				<div class="minus"><button>-</button></div>
-			</div>
-		</div>
-		<div class="cart-details-product">
-			<img src="Images/Laptop2.jpg">
-			<div class="details-info">
-				<h2>Gamer Acer</h2>
-				<p>S/ 2,999.00</p>
-			</div>
-			<div class="cart-product-quantity"><p>1</p></div>
-			<div class="details-buttons">
-				<div class="plus"><button>+</button></div>
-				<div class="minus"><button>-</button></div>
-			</div>
-		</div>
-		<div class="cart-details-product">
-			<img src="Images/Smartphone4.jpg">
-			<div class="details-info">
-				<h2>Samsung Galaxy S23 Ultra 5G</h2>
-				<p>S/ 3,979.00</p>
-			</div>
-			<div class="cart-product-quantity"><p>1</p></div>
-			<div class="details-buttons">
-				<div class="plus"><button>+</button></div>
-				<div class="minus"><button>-</button></div>
-			</div>
-		</div>
-		<button id="cart">Ir al Carrito</button>
+<div class="cart-details">
+<p id="cart-title">Mis productos</p>
+<div class="cart-details-product">
+	<img src="Images/Tablet2.jpg">
+	<div class="details-info">
+		<h2>iPad Wi-Fi</h2>
+		<p>S/ 2,199.00</p>
 	</div>
+	<div class="cart-product-quantity"><p>1</p></div>
+	<div class="details-buttons">
+		<div class="plus"><button>+</button></div>
+		<div class="minus"><button>-</button></div>
+	</div>
+</div>
+<div class="cart-details-product">
+	<img src="Images/Laptop2.jpg">
+	<div class="details-info">
+		<h2>Gamer Acer</h2>
+		<p>S/ 2,999.00</p>
+	</div>
+	<div class="cart-product-quantity"><p>1</p></div>
+	<div class="details-buttons">
+		<div class="plus"><button>+</button></div>
+		<div class="minus"><button>-</button></div>
+	</div>
+</div>
+<div class="cart-details-product">
+	<img src="Images/Smartphone4.jpg">
+	<div class="details-info">
+		<h2>Samsung Galaxy S23 Ultra 5G</h2>
+		<p>S/ 3,979.00</p>
+	</div>
+	<div class="cart-product-quantity"><p>1</p></div>
+	<div class="details-buttons">
+		<div class="plus"><button>+</button></div>
+		<div class="minus"><button>-</button></div>
+	</div>
+</div>
+<button id="cart">Ir al Carrito</button>
+</div>
 `);
 
 
@@ -91,7 +91,7 @@ const header = document.getElementById('header');
 const cartInfo = document.getElementById('carrito');
 const cartDetails = document.querySelector('.cart-details');
 
-window.onscroll = function() {
+window.onscroll = function () {
 	const currentScrollPos = window.pageYOffset;
 	const screenHeight = window.innerHeight;
 
@@ -158,7 +158,7 @@ function buscarProductos() {
 	var input = document.getElementById('search').value.toLowerCase();
 	if (input !== "") {
 		var productos = document.querySelectorAll('.product');
-		productos.forEach(function(producto) {
+		productos.forEach(function (producto) {
 			var nombreProducto = producto.querySelector('h2').textContent.toLowerCase();
 			if (nombreProducto.includes(input)) {
 				producto.style.display = 'block';
@@ -186,14 +186,14 @@ function buscarProductos() {
 //Boton mi Cuenta
 
 const account = document.getElementById('cuenta');
-account.addEventListener('click', function() {
+account.addEventListener('click', function () {
 	window.location.href = "Cuenta.html";
 });
 
 
 //Boton mi Carrito
 
-cartInfo.addEventListener('click', function(event) {
+cartInfo.addEventListener('click', function (event) {
 	if (cartDetails.style.display === "none" || cartDetails.style.display === "") {
 		cartDetails.style.display = "block";
 	} else {
@@ -204,20 +204,20 @@ cartInfo.addEventListener('click', function(event) {
 });
 
 // Cerrar el panel cuando se hace clic fuera de él
-document.addEventListener('click', function(event) {
+document.addEventListener('click', function (event) {
 	if (event.target !== cartInfo && !cartDetails.contains(event.target)) {
 		cartDetails.style.display = "none";
 	}
 });
 
 // Evitar que el clic en el panel se propague y lo cierre
-cartDetails.addEventListener('click', function(event) {
+cartDetails.addEventListener('click', function (event) {
 	event.stopPropagation();
 });
 
 //Ir al carrito
 const cart = document.getElementById('cart');
-cart.addEventListener('click', function() {
+cart.addEventListener('click', function () {
 	window.location.href = "Carrito.html";
 });
 
@@ -265,9 +265,9 @@ function decrementQuantity(event) {
 //Página Detalle del Producto (Galería)
 
 var productos = document.querySelectorAll('.product');
-productos.forEach(function(producto) {
-	producto.addEventListener("click", function(event) {
-	// Verifica si el clic fue en el botón "Agregar al carrito"
+productos.forEach(function (producto) {
+	producto.addEventListener("click", function (event) {
+		// Verifica si el clic fue en el botón "Agregar al carrito"
 		if (event.target.matches('img') || event.target.matches('h2')) {
 			window.open("DetalleProducto.html", "_blank"); // Abre en una nueva pestaña
 		}
@@ -278,9 +278,9 @@ productos.forEach(function(producto) {
 //Página Detalle del Producto (Detalles del carrito)
 
 var productos = document.querySelectorAll('.cart-details-product');
-productos.forEach(function(producto) {
-	producto.addEventListener("click", function(event) {
-	// Verifica si el clic fue en el botón "Agregar al carrito"
+productos.forEach(function (producto) {
+	producto.addEventListener("click", function (event) {
+		// Verifica si el clic fue en el botón "Agregar al carrito"
 		if (event.target.matches('img') || event.target.matches('h2')) {
 			window.open("DetalleProducto.html", "_blank"); // Abre en una nueva pestaña
 		}
